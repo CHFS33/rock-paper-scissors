@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors<Document</title>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>>
+  <div id="output"></div>
+  <script>
+    // Hijack console.log so it still logs in DevTools
+    // AND also prints to the page
+    (function () {
+      const oldLog = console.log;
+      const out = document.getElementById("output");
+      console.log = function (message) {
+        oldLog.apply(console, arguments); // keep normal console behavior
+        const p = document.createElement("p");
+        p.textContent = Array.from(arguments).join(" ");
+        out.appendChild(p);
+      };
+    })();
+  </script>
+  
+  <script src="rock-paper-scissors.js"></script>
+</body>
+</html>
